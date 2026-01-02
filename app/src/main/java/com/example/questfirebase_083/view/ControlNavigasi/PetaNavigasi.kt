@@ -7,11 +7,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.example.QuestFirebase_083.view.EntrySiswaScreen
 import com.example.questfirebase_083.view.HomeScreen
 import com.example.questfirebase_083.view.route.DestinasiEntry
 import com.example.questfirebase_083.view.route.DestinasiHome
 import com.example.questfirebase_083.view.route.DestinasiDetail
+import com.example.questfirebase_083.view.EntrySiswaScreen
 
 @Composable
 fun DataSiswaApp(

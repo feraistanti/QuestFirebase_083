@@ -1,24 +1,28 @@
 package com.example.questfirebase_083.viewmodel
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.questfirebase_083.modeldata.Siswa
 import com.example.questfirebase_083.repositori.RepositorySiswa
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.io.IOException
 
+// Sealed interface untuk mendefinisikan status UI
 sealed interface StatusUiSiswa {
-    data class Success(val siswa: List<Siswa>) : StatusUiSiswa
+    data class Success(val siswa: List<Siswa> = listOf()) : StatusUiSiswa
     object Error : StatusUiSiswa
     object Loading : StatusUiSiswa
 }
 
 class HomeViewModel(private val repositorySiswa: RepositorySiswa) : ViewModel() {
-    var statusUiSiswa: StatusUiSiswa by mutableStateOf(StatusUiSiswa.Loading)
-        private set
+
+    // Menggunakan StateFlow (rekomendasi terbaru) untuk menangani state di ViewModel
+    private val _statusUiSiswa = MutableStateFlow<StatusUiSiswa>(StatusUiSiswa.Loading)
+    val statusUiSiswa: StateFlow<StatusUiSiswa> = _statusUiSiswa.asStateFlow()
 
     init {
         loadSiswa()
@@ -26,10 +30,10 @@ class HomeViewModel(private val repositorySiswa: RepositorySiswa) : ViewModel() 
 
     fun loadSiswa() {
         viewModelScope.launch {
-            statusUiSiswa = StatusUiSiswa.Loading
-            statusUiSiswa = try {
-                // Pastikan fungsi di RepositorySiswa bernama getDataSiswa()
-                StatusUiSiswa.Success(repositorySiswa.getDataSiswa())
+            _statusUiSiswa.value = StatusUiSiswa.Loading
+            _statusUiSiswa.value = try {
+                val data = repositorySiswa.getDataSiswa()
+                StatusUiSiswa.Success(data)
             } catch (e: IOException) {
                 StatusUiSiswa.Error
             } catch (e: Exception) {
