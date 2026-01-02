@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "1083292975004",
     "project_id": "fir-kotlin-bbd9c",
-    "storage_bucket": "fir-kotlin-bbd9c.firebasestorage.app"
+    "storage_bucket": "fir-kotlin-bbd9c.questfirebasestorage.app"
   },
   "client": [
     {

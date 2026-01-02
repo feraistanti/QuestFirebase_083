@@ -1,4 +1,4 @@
-package com.example.questfirebase_083.viewmodel
+package com.example.QuestFirebase_083.viewmodel
 
 class DetailViewModel {
 }

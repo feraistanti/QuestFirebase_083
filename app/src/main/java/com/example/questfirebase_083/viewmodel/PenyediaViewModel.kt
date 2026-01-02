@@ -1,10 +1,10 @@
 package com.example.questfirebase_083.viewmodel
 
-
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.QuestFirebase_083.viewmodel.EntryViewModel
 import com.example.questfirebase_083.repositori.AplikasiDataSiswa
 
 fun CreationExtras.aplikasiDataSiswa(): AplikasiDataSiswa =

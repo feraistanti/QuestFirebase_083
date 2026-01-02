@@ -10,7 +10,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.QuestFirebase"
+        applicationId = "com.example.questfirebase_083"
         minSdk = 27
         targetSdk = 35
         versionCode = 1
