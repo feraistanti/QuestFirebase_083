@@ -113,3 +113,14 @@ fun HomeBody(
         }
     }
 }
+
+@Composable
+fun LoadingScreen(modifier: Modifier = Modifier) {
+    Image(
+        painter = painterResource(R.drawable.loading_img),
+        contentDescription = stringResource(R.string.loading),
+        modifier = modifier.size(200.dp)
+    )
+}
+
+@Composable
