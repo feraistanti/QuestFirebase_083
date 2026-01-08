@@ -52,3 +52,10 @@ class FirebaseRepositorySiswa : RepositorySiswa {
         return try {
             val query = collection.whereEqualTo("id", id).get().await()
             query.documents.firstOrNull()?.let { doc ->
+                Siswa(
+                    id = doc.getLong("id")?.toLong() ?: 0,
+                    nama = doc.getString("nama") ?: "",
+                    alamat = doc.getString("alamat") ?: "",
+                    telpon = doc.getString("telpon") ?: ""
+                )
+            }
