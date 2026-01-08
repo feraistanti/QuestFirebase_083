@@ -48,3 +48,7 @@ class FirebaseRepositorySiswa : RepositorySiswa {
         docRef.set(data).await()
     }
 
+    override suspend fun getSatuSiswa(id: Long): Siswa? {
+        return try {
+            val query = collection.whereEqualTo("id", id).get().await()
+            query.documents.firstOrNull()?.let { doc ->
