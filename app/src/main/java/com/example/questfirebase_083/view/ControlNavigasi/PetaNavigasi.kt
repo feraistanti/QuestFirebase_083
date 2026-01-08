@@ -58,3 +58,10 @@ fun HostNavigasi(
             )
         }
 
+        composable(
+            DestinasiDetail.routeWithArgs,
+            arguments = listOf(
+                navArgument(DestinasiDetail.itemIdArg) {
+                    type = NavType.StringType
+                }
+            )
